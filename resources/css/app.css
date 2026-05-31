@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --animate-scroll-kiri: scrollKiri 20s linear infinite;
+
+    @keyframes scrollKiri {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+}
+
+/* --- BASE STYLES & RESPONSIVE FIXES --- */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* FIX RESPONSIVE MOBILE */
+    @media (max-width: 768px) {
+        .panel-card, .main-content {
+            flex-direction: column !important;
+            width: 100% !important;
+            padding: 15px !important;
+            gap: 15px !important;
+        }
+
+        .sidebar {
+            width: 100% !important;
+            margin-bottom: 20px;
+        }
+
+        img, .profile-image {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    }
+}
+
+/* --- HERO SECTION --- */
+.hero__panel {
+    max-width: 650px; 
+    padding: 50px; 
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.hero__title {
+    line-height: 1.25; 
+    font-size: clamp(2rem, 4vw, 3rem); 
+}
+
+/* --- CAROUSEL UTILITY --- */
+@utility carousel-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: var(--animate-scroll-kiri) !important;
+}
+
+.carousel-track > div {
+    flex-shrink: 0;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
