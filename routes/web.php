@@ -51,10 +51,4 @@ Route::middleware('auth')->group(function (): void {
     Route::put('/profile', [AccountController::class, 'update'])->name('account.profile.update');
     Route::get('/account/orders', [AccountController::class, 'orders'])->name('account.orders');
     Route::get('/orders/{id}/download-invoice', [AccountController::class, 'downloadInvoice'])->name('orders.download-invoice');
-
-// Route CRUD untuk Lookbook
-Route::get('/admin/lookbooks/{lookbook}/edit', [AdminController::class, 'editLookbook'])->name('admin.lookbooks.edit');
-Route::post('/admin/lookbooks', [AdminController::class, 'storeLookbook'])->name('admin.lookbooks.store');
-Route::put('/admin/lookbooks/{lookbook}', [AdminController::class, 'updateLookbook'])->name('admin.lookbooks.update');
-Route::delete('/admin/lookbooks/{lookbook}', [AdminController::class, 'destroyLookbook'])->name('admin.lookbooks.destroy');
 });
